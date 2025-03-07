@@ -2,8 +2,12 @@
   <head>
 	<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   </head>
-  <body>
-	<a-scene>
+
+   <body>
+
+   <a-scene cursor="rayOrigin: mouse">
+
+    
         <a-assets>
           <img id="fons" src="fons1.jpg" />
           <img id="texturaterra" src="texturaterra.jpg" />
@@ -17,20 +21,47 @@
           <img id="grup" src="8.png"/> 
           <img id="pared" src="wall.jpg" /> 
           
-          
-          
         </a-assets>
         <a-sky src="#fons"></a-sky>
         <a-plane position="0 0 0" rotation="-90 0 0" width="100" height="100" src="#texturaterra"></a-plane>
-        <a-plane position="-1 4 -8" rotation="0 0 0" width="8" height="2"  src="#guernica"></a-plane>
+        <a-plane position="-1 4 -8" rotation="0 0 0" width="8" height="2"  src="#guernica"
+        animation="property: position; to: -1 4 -30; dur: 5000; dir: alternate; loop: true">
+        </a-plane>
+        <a-box position="-4 3 0" rotation="0 0 50"  src="#cara" depth="1" height="1" width="1"
+        animation="property: rotation; to: 0 360 0; dur: 4000; loop: true"></a-box>
+        <a-dodecahedron id="esmou" position="8 2 -6" rotation="0 30 0" radius="3" src="#bicicletes">
+        </a-dodecahedron>
+
         <a-box position="4 3 0" rotation="0 0 50"  src="#cara" depth="1" height="1" width="1"></a-box>
-        <a-box position="-6 1 -1" rotation="0 0 30"  src="#dona" depth="1" height="1" width="1"></a-box>
-        <a-box position="0.5 2 15" rotation="0 -2 5"  src="#objectes" depth="1" height="9" width="9"></a-box>
-        <a-box position="-5 1.8 15.5" rotation="0 -2 -3"  src="#pared" depth="1" height="9" width="9"></a-box>
-        <a-box position="5 2.1 15.9" rotation="0 -10 0"  src="#dones" depth="1" height="9" width="9"></a-box>
-        <a-dodecahedron position="8 2 -6" rotation="0 30 0" radius="3" src="#bicicletes"></a-dodecahedron>
-        <a-plane position="-6 1 5" rotation="30 90 10" width="4" height="4" src="#grup"></a-plane>  
-        <a-cylinder position="-2 1 10" rotation="0 0 0" radius="3" height="2" src="#pallasso"></a-cylinder>  
+        <a-box position="-6 1 -1" rotation="0 0 30"  src="#dona" depth="1" height="1" width="1" animation="property: rotation; to: 0 360 0; dur: 4000; loop: true"></a-box>
+        <a-box position="-10 16 8" rotation="20 45 -3"  src="#objectes" depth="8" height="9" width="9"></a-box>
+        <a-box position="5 2.1 15.9" rotation="0 -10 0"  src="#dones" depth="15" height="15" width="15" animation="property: rotation; to: 0 360 360; dur: 15000; loop: true"></a-box>
+        <a-plane id="esmou2"   position="-26 1 15" rotation="30 90 10" width="20" height="20" src="#grup"></a-plane>  
+        <a-cylinder position="-16 7 -4" rotation="-10 40 40" radius="3" height="9" src="#pallasso"></a-cylinder>  
+      
        	</a-scene>
+
+
+        <script>
+          let unobjecte = document.querySelector("#esmou");
+        
+          unobjecte.addEventListener("click", () => {            
+            unobjecte.setAttribute("animation", {
+              property: "position",
+              to: "8 40 -6",
+              dur: 10000
+            });
+          });
+
+          let unobjecte2 = document.querySelector("#esmou2");
+        
+          unobjecte2.addEventListener("click", () => {            
+            unobjecte2.setAttribute("animation", {
+              property: "position",
+              to: "-26 1 150",
+              dur: 10000
+            });
+          });
+        </script>
   </body>
 </html>
